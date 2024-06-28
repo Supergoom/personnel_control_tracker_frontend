@@ -1,0 +1,106 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --text-color: #1a1a1a;
+  --main-bg: #fff;
+
+  --btn-bg: #287EFF;
+  --bth-bg-hover: #0050C8;
+  --btn-text: #fff;
+
+  --theme-transition: .3s;
+
+  --table-bg-row: #f9fbff;
+  --table-bg-col: #f1f6ff;
+  --table-border-color: #e2e2e2;
+}
+
+[data-theme="dark"] {
+  --main-bg: #242424;
+  --text-color: #fff;
+
+  --btn-bg: #fff;
+  --bth-bg-hover: #ccc;
+  --btn-text: #000;
+
+  --table-bg-row: #f9fbff;
+  --table-bg-col: #f1f6ff;
+}
+
+body {
+  background: var(--main-bg);
+  transition: var(--theme-transition);
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  cursor: pointer;
+  transition: border-color 0.25s;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 0;
+  padding: 0 26px;
+  font-size: 18px;
+  line-height: 53px;
+  border-radius: 7px;
+}
+
+button:hover,
+button.active {
+  background: var(--bth-bg-hover);
+}
+
+:focus,
+:focus-visible {
+  outline: none;
+}
+
+.rounded-none {
+  border-radius: 0;
+}
+
+.rounded-t-none {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.rounded-b-none {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.rounded-l-none {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.rounded-r-none {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.title-block {
+  font-size: 18px;
+  margin-bottom: 16px;
+}

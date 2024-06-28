@@ -1,0 +1,20 @@
+.main {
+    display: flex;
+    gap: 1px;
+}
+
+.mapContainer {
+    margin-top: 37px;
+}
+
+.map {
+    margin: 0 !important;
+
+    &>div {
+        justify-content: flex-end;
+    }
+
+    & [class~='rdp-day_selected'] {
+        background: var(--btn-bg) !important;
+    }
+}
