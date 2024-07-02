@@ -11,7 +11,6 @@
         background: var(--btn-bg);
         color: var(--btn-text);
         height: 53px;
-        text-align: center;
         padding: 0 20px;
         line-height: 1;
         display: flex;
@@ -101,5 +100,18 @@
         display: flex;
         align-items: center;
         gap: 10px;
+    }
+}
+
+.nameUser {
+    background: none;
+    color: var(--text-color);
+    text-decoration: underline;
+    padding: 0;
+    line-height: 1;
+
+    &:hover {
+        background: none;
+        color: var(--text-color);
     }
 }

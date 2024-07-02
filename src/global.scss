@@ -4,6 +4,7 @@
   font-weight: 400;
 
   --text-color: #1a1a1a;
+  --text-color-bg: white;
   --main-bg: #fff;
 
   --btn-bg: #287EFF;
@@ -15,6 +16,8 @@
   --table-bg-row: #f9fbff;
   --table-bg-col: #f1f6ff;
   --table-border-color: #e2e2e2;
+
+  --disabled: #cfcfcf;
 }
 
 [data-theme="dark"] {

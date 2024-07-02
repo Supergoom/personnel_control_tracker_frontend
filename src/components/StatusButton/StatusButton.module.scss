@@ -1,0 +1,35 @@
+.btn {
+    line-height: 45px;
+}
+
+.disabled {
+    background: var(--disabled);
+    cursor: not-allowed;
+
+    &:hover {
+        background: var(--disabled);
+    }
+}
+
+.playPauseBtn {
+    display: flex;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.stop {
+    background: transparent;
+    border: 1px solid var(--btn-bg);
+    color: var(--text-color);
+    padding: 0 15px;
+
+    &:hover {
+        background: var(--btn-bg);
+        color: var(--text-color-bg)
+    }
+}
