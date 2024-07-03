@@ -1,0 +1,40 @@
+.btn {
+    cursor: pointer;
+}
+
+.dropdown {
+    padding: 20px;
+    background: var(--text-color-bg);
+    border: 1px solid var(--table-border-color);
+    border-radius: 10px;
+
+    & > p {
+        font-size: 14px;
+        white-space: nowrap;
+        margin: 0;
+        text-align: center;
+        font-weight: 500;
+    }
+}
+
+.btns {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+    
+    &>button {
+        height: 35px;
+        padding: 0 10px;
+        
+        &:first-child {
+            background: var(--color-btn-blue);
+        }
+
+
+        &:hover {
+            scale: (1);
+            background: #1B9EC8;
+            color: #fff;
+        }
+    }
+}

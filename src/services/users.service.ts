@@ -19,5 +19,11 @@ export const UsersService = {
 			last_name,
 			coast
 		}).then(res => res.data)
+	},
+
+	delUser: async (personal_id: number,) => {
+		return api.delete(`personals/${personal_id}`)
+			.then(res => res.data)
 	}
+
 }

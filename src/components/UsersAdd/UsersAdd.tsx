@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import Modal from 'react-modal';
 import { UsersService } from "../../services/users.service";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
@@ -65,19 +65,19 @@ export const UsersAdd = ({btnText, btnClassName}: Props) => {
                 </form>
             </Modal>
             <ToastContainer
-position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="light"
-/>
-{/* Same as */}
-<ToastContainer />
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                />
+                {/* Same as */}
+            <ToastContainer />
         </div>
     )
 }
