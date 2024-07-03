@@ -5,6 +5,7 @@ export const useGetUsers = () => {
     return useQuery({
 		queryKey: [`users`],
 		queryFn: () => UsersService.getUsers(),
-        select: data => data.data
+        select: data => data.data,
+		refetchInterval: 0.5 * 60 * 1000,
 	})
 }

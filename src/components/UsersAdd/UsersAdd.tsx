@@ -7,9 +7,15 @@ import 'react-toastify/dist/ReactToastify.css';
 type Props = {
     btnText: string;
     btnClassName?: string;
+    value?: {
+        name: string;
+        last_name: string;
+        second_name: string;
+        coast: string;
+    }
 }
 
-export const UsersAdd = ({btnText, btnClassName}: Props) => {
+export const UsersAddEdit = ({btnText, btnClassName, value}: Props) => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
@@ -41,7 +47,6 @@ export const UsersAdd = ({btnText, btnClassName}: Props) => {
               error: 'Пользователь не создан 🤯'
             }
         )
-        
     }
 
     return (
@@ -57,10 +62,10 @@ export const UsersAdd = ({btnText, btnClassName}: Props) => {
                 <h2>Новый сотрудник</h2>
                 <button onClick={closeModal}>Закрыть</button>
                 <form onSubmit={submit}>
-                    <input type="text" name="second_name" placeholder="Фамилия" />
-                    <input type="text" name="user_name" placeholder="Имя" />
-                    <input type="text" name="last_name" placeholder="Отчество" />
-                    <input type="text" name="coast" placeholder="Ставка в час" />
+                    <input defaultValue={value && value.second_name || ''} type="text" name="second_name" placeholder="Фамилия" />
+                    <input defaultValue={value && value.name || ''} type="text" name="user_name" placeholder="Имя" />
+                    <input defaultValue={value && value.coast || ''} type="text" name="last_name" placeholder="Отчество" />
+                    <input defaultValue={value && value.coast || ''} type="text" name="coast" placeholder="Ставка в час" />
                     <input type="submit" />
                 </form>
             </Modal>

@@ -30,7 +30,7 @@ export const DeleteUser = ({personal_id}: IUserId) => {
                 <p>Удалить сотрудника?</p>
                 <div className={styles.btns}>
                     <button 
-                        className={'bg-blue'}
+                        className={styles.deleteBtn}
                         onClick={() => onClickDelUser()}
                     >
                         Удалить
