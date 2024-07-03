@@ -53,7 +53,7 @@ export const UserResultList = () => {
                             {item.coast}
                         </div>
                         <div className="">
-                            2 800 р.
+                            {item.coast_today}руб.
                             <DeleteUser personal_id={item.personal_id}/>
                         </div>
                     </div>

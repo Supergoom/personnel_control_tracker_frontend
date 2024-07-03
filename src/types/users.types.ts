@@ -5,6 +5,7 @@ export interface IUsers extends IUserId, IStatus {
     coast: string;
     status_id: 0 | 1 | 2 | 3;
     time_format: string;
+    coast_today: number;
 }
 
 export interface IStatusUser extends IUserId, IStatus {
@@ -16,9 +17,9 @@ export interface IStatus {
 }
 
 export enum IStatusEnum {
-    OFF = 'off',
     START = 'start',
-    PAUSE = 'pause',
+    PAUSE_START = 'pause_start',
+    PAUSE_END = 'pause_end',
     STOP = 'stop',
 }
 

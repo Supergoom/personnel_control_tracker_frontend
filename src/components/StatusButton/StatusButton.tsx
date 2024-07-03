@@ -26,7 +26,7 @@ export const StatusButton = ({personal_id, status}: IStatusUser) => {
                     Cтоп
                 </button>
                 <div className={styles.playPauseBtn}
-                    onClick={() => clickStatus(IStatusEnum.START)}
+                    onClick={() => clickStatus(IStatusEnum.PAUSE_END)}
                 >
                     <PlayIcons />
                 </div>
@@ -43,7 +43,7 @@ export const StatusButton = ({personal_id, status}: IStatusUser) => {
                     Стоп
                 </button>
                 <div className={styles.playPauseBtn}
-                    onClick={() => clickStatus(IStatusEnum.PAUSE)}
+                    onClick={() => clickStatus(IStatusEnum.PAUSE_START)}
                 >
                     <PauseIcons />
                 </div>
