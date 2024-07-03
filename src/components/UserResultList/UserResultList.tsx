@@ -12,10 +12,17 @@ export const UserResultList = () => {
     if (error) return 'An error has occurred: ' + error.message;
     if (data && !data?.length) return 'Нет пользователей';
 
+    const totalCoast = () => {
+        let sum = 0;
+        data.forEach((item: IUsers) => {
+            sum += Number(item.coast_today);
+        })
+        return sum;
+    }
 
     return (
         <div className={style.main}>
-            <div className="title-block">Результат за 01.01.24 - 31.02.24</div>
+            <div className="title-block">Результат за сегодня</div>
             <div className="">
                 <div className={style.header}>
                     <div className="">ФИО</div>
@@ -53,7 +60,7 @@ export const UserResultList = () => {
                             {item.coast}
                         </div>
                         <div className="">
-                            {item.coast_today}руб.
+                            {item.coast_today} руб.
                             <DeleteUser personal_id={item.personal_id}/>
                         </div>
                     </div>
@@ -62,7 +69,7 @@ export const UserResultList = () => {
             <div className={style.buttom}>
                 <div className={style.result}>
                     <div>Итого:</div>
-                    <div>16 353 р.</div>
+                    <div>{totalCoast()} р.</div>
                 </div>
             </div>
             <div className={style.buttomBtns}>

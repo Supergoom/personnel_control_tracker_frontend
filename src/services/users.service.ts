@@ -24,6 +24,11 @@ export const UsersService = {
 	delUser: async (personal_id: number,) => {
 		return api.delete(`personals/${personal_id}`)
 			.then(res => res.data)
-	}
+	},
+
+	filterDateUsers: async (data: { from: number, to: number}) => {
+		return api.get(`/work/filter?start_timestamp=${data.from}&end_timestamp=${data.to}`)
+			.then(res => res.data)
+	},
 
 }
