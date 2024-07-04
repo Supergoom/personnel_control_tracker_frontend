@@ -31,4 +31,13 @@ export const UsersService = {
 			.then(res => res.data)
 	},
 
+	editUser: async (name: string, second_name: string, last_name: string, coast: string, personal_id: number) => {
+		return api.patch(`/personals/${personal_id}`,{
+			name,
+			second_name,
+			last_name,
+			coast
+		})
+			.then(res => res.data)
+	},
 }

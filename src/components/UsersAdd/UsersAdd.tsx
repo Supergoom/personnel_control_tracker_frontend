@@ -1,21 +1,23 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, ReactNode, useState } from "react";
 import Modal from 'react-modal';
 import { UsersService } from "../../services/users.service";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
-    btnText: string;
+    btnText: ReactNode;
     btnClassName?: string;
+    titlePopup: string | HTMLElement;
     value?: {
         name: string;
         last_name: string;
         second_name: string;
         coast: string;
+        personal_id: number;
     }
 }
 
-export const UsersAddEdit = ({btnText, btnClassName, value}: Props) => {
+export const UsersAddEdit = ({btnText, btnClassName, value, titlePopup}: Props) => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
@@ -34,21 +36,22 @@ export const UsersAddEdit = ({btnText, btnClassName, value}: Props) => {
         event.preventDefault();
         const target = event.currentTarget;
 
-        // if(!!value) {
-        //     return toast.promise(
-        //         UsersService.editUser(
-        //             target.user_name.value,
-        //             target.second_name.value,
-        //             target.last_name.value,
-        //             target.coast.value
-        //         ),
-        //         {
-        //           pending: 'Изменен пользователя',
-        //           success: 'Пользователь изменен 👌',
-        //           error: 'Пользователь не изменен 🤯'
-        //         }
-        //     )
-        // }
+        if(!!value) {
+            return toast.promise(
+                UsersService.editUser(
+                    target.user_name.value,
+                    target.second_name.value,
+                    target.last_name.value,
+                    target.coast.value,
+                    value.personal_id
+                ),
+                {
+                  pending: 'Изменен пользователя',
+                  success: 'Пользователь изменен 👌',
+                  error: 'Пользователь не изменен 🤯'
+                }
+            )
+        }
 
         return toast.promise(
             UsersService.addUser(
