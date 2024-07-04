@@ -6,6 +6,7 @@ import style from './App.module.scss';
 import { useState } from 'react';
 import { IState } from '../../types/users.types';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ToastContainer } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ function App() {
                     <UserResultList state={state}/>
                 </div>
             </div>
+            <ToastContainer />
             <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
     )

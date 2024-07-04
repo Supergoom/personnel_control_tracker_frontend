@@ -56,13 +56,13 @@ export const UserResultList = ({state}: {state: IState}) => {
                             <StatusButton status={item.status} personal_id={item.personal_id}/>
                         </div>
                         <div className="">
-                            09:00 - 13:00 (4ч.)
+                            {item.work_period}
                         </div>
                         <div className="">
                             {item.time_format}
                         </div>
                         <div className={style.salary}>
-                            {item.coast}
+                            {item.coast} руб.
                         </div>
                         <div className="">
                             {item.coast_today} руб.

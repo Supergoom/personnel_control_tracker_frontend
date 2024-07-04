@@ -1,8 +1,8 @@
 import { FormEvent, ReactNode, useState } from "react";
 import Modal from 'react-modal';
-import { UsersService } from "../../services/users.service";
-import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useAddUser } from "../../hooks/useAddUser";
+import { useEditUser } from "../../hooks/useEditUser";
 
 type Props = {
     btnText: ReactNode;
@@ -19,6 +19,8 @@ type Props = {
 
 export const UsersAddEdit = ({btnText, btnClassName, value, titlePopup}: Props) => {
     const [modalIsOpen, setIsOpen] = useState(false);
+    const {mutate: mutateAddUser} = useAddUser();
+    const {mutate: mutateEditUser} = useEditUser();
 
     function openModal() {
         setIsOpen(true);
@@ -41,44 +43,30 @@ export const UsersAddEdit = ({btnText, btnClassName, value, titlePopup}: Props) 
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
             padding: '20px 50px 40px'
-          },
-        
+        }
     };
 
     const submit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const target = event.currentTarget;
 
-        if(!!value) {
-            return toast.promise(
-                UsersService.editUser(
-                    target.user_name.value,
-                    target.second_name.value,
-                    target.last_name.value,
-                    target.coast.value,
-                    value.personal_id
-                ),
-                {
-                  pending: 'Изменен пользователя',
-                  success: 'Пользователь изменен 👌',
-                  error: 'Пользователь не изменен 🤯'
-                }
-            )
-        }
+        closeModal();
 
-        return toast.promise(
-            UsersService.addUser(
-                target.user_name.value,
-                target.second_name.value,
-                target.last_name.value,
-                target.coast.value
-            ),
-            {
-              pending: 'Создаем пользователя',
-              success: 'Пользователь создан 👌',
-              error: 'Пользователь не создан 🤯'
-            }
-        )
+        if(!!value) {
+            return mutateEditUser({
+                name: target.user_name.value,
+                second_name: target.second_name.value,
+                last_name: target.last_name.value,
+                coast: target.coast.value,
+                personal_id: value.personal_id
+            })
+        }
+        return mutateAddUser({
+            name: target.user_name.value,
+            second_name: target.second_name.value,
+            last_name: target.last_name.value,
+            coast: target.coast.value,
+        })
     }
 
     return (
@@ -106,23 +94,9 @@ export const UsersAddEdit = ({btnText, btnClassName, value, titlePopup}: Props) 
                     <input defaultValue={value && value.name || ''} type="text" name="user_name" placeholder="Имя" />
                     <input defaultValue={value && value.coast || ''} type="text" name="last_name" placeholder="Отчество" />
                     <input defaultValue={value && value.coast || ''} type="text" name="coast" placeholder="Ставка в час" />
-                    <input type="submit" className="btn"/>
+                    <input type="submit" className="btn" />
                 </form>
             </Modal>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-                />
-                {/* Same as */}
-            <ToastContainer />
         </div>
     )
 }

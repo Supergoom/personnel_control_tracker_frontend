@@ -6,6 +6,7 @@ export interface IUsers extends IUserId, IStatus {
     status_id: 0 | 1 | 2 | 3;
     time_format: string;
     coast_today: number;
+    work_period: string;
 }
 
 export interface IStatusUser extends IUserId, IStatus {
