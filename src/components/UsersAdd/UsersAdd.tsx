@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 type Props = {
     btnText: ReactNode;
     btnClassName?: string;
-    titlePopup: string | HTMLElement;
+    titlePopup: string;
     value?: {
         name: string;
         last_name: string;
@@ -78,7 +78,7 @@ export const UsersAddEdit = ({btnText, btnClassName, value, titlePopup}: Props) 
                 style={customStyles}
                 contentLabel="Example Modal"
             >
-                <h2>Новый сотрудник</h2>
+                <h2>{titlePopup}</h2>
                 <button onClick={closeModal}>Закрыть</button>
                 <form onSubmit={submit}>
                     <input defaultValue={value && value.second_name || ''} type="text" name="second_name" placeholder="Фамилия" />
