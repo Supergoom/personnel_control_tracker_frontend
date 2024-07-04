@@ -26,8 +26,8 @@ export const UsersService = {
 			.then(res => res.data)
 	},
 
-	filterDateUsers: async (data: { from: number, to: number}) => {
-		return api.get(`/work/filter?start_timestamp=${data.from}&end_timestamp=${data.to}`)
+	filterDateUsers: async (from: string, to: string) => {
+		return api.get(`/work/filter?start_timestamp=${from}&end_timestamp=${to}`)
 			.then(res => res.data)
 	},
 

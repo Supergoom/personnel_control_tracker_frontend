@@ -1,12 +1,12 @@
 import { useGetUsers } from '../../hooks/useGetUsers';
-import { IUsers } from '../../types/users.types';
+import { IState, IUsers } from '../../types/users.types';
 import { DeleteUser } from '../DeleteUser/DeleteUser';
 import { StatusButton } from '../StatusButton/StatusButton';
 import { UsersAddEdit } from '../UsersAdd/UsersAdd';
 import style from './UserResultList.module.scss';
 
-export const UserResultList = () => {
-    const {isPending, error, data} = useGetUsers();
+export const UserResultList = ({state}: {state: IState}) => {
+    const {isPending, error, data} = useGetUsers(state);
 
     if (isPending) return 'Loading...';
     if (error) return 'An error has occurred: ' + error.message;

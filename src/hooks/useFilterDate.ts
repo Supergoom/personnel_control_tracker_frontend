@@ -5,7 +5,7 @@ export const useFilterDate = () => {
     const client = useQueryClient();
 
     return useMutation({
-        mutationFn: (data: {from:number, to:number}) => UsersService.filterDateUsers(data),
+        mutationFn: ({from, to}: {from:string, to:string}) => UsersService.filterDateUsers(from, to),
         onSuccess: () => {
             client.invalidateQueries({queryKey: ['users']})
         }

@@ -26,3 +26,12 @@ export enum IStatusEnum {
 export interface IUserId {
     personal_id: number;
 }
+
+export interface IState {
+    tab: 'today' | 'filter' | 'user';
+    filter: {
+        from: string;
+        to: string;
+    },
+    userId?: null
+}
