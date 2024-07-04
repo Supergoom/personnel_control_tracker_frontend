@@ -38,13 +38,13 @@ export const Filter = ({setState}: any) => {
  
     return (
         <div>
-            <div className="title-block">Фильтр</div>
-            <div className={style.main}>
+            {/* <div className="title-block">Фильтр</div> */}
+            {/* <div className={style.main}>
                 <Button className="rounded-r-none">Год</Button>
                 <Button className="rounded-none active">Месяц</Button>
                 <Button className="rounded-none">Неделя</Button>
                 <Button className="rounded-l-none">Сегодня</Button>
-            </div>
+            </div> */}
 
             <div className={style.mapContainer}>
                 <div className="title-block">Выбрать период</div>
@@ -65,6 +65,7 @@ export const Filter = ({setState}: any) => {
                         )
                       }
                 />
+                <button onClick={() => setRange({from: today})}>Go to Today</button>
             </div>
         </div>
     )
