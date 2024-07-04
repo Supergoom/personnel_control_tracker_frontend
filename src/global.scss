@@ -57,7 +57,8 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+button,
+.btn {
   cursor: pointer;
   transition: border-color 0.25s;
   background: var(--btn-bg);
@@ -67,11 +68,16 @@ button {
   font-size: 18px;
   line-height: 53px;
   border-radius: 7px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 button:hover,
-button.active {
+button.active,
+.btn:hover {
   background: var(--bth-bg-hover);
+  color: var(--btn-text);
 }
 
 :focus,
@@ -106,4 +112,23 @@ button.active {
 .title-block {
   font-size: 18px;
   margin-bottom: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &> input {
+    max-width: 500px;
+    border-radius: 7px;
+    height: 50px;
+    border: 1px solid var(--table-border-color);
+    padding: 0 20px;
+    font-size: 18px;
+
+    &[type="submit"] {
+      width: max-content;
+    }
+  }
 }

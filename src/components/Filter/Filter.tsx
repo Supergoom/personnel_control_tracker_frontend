@@ -9,7 +9,7 @@ import { ru } from 'date-fns/locale';
 
 export const Filter = ({setState}: any) => {
     const initialRange: DateRange = {
-        from: new Date(),
+        from: undefined,
         to: undefined// to: addDays(new Date(), 4)
     };
 
@@ -33,6 +33,8 @@ export const Filter = ({setState}: any) => {
             }
         });
     }
+
+    const today = new Date();
  
     return (
         <div>
@@ -40,19 +42,28 @@ export const Filter = ({setState}: any) => {
             <div className={style.main}>
                 <Button className="rounded-r-none">Год</Button>
                 <Button className="rounded-none active">Месяц</Button>
-                <Button className="rounded-none">Недел</Button>
+                <Button className="rounded-none">Неделя</Button>
                 <Button className="rounded-l-none">Сегодня</Button>
             </div>
 
             <div className={style.mapContainer}>
                 <div className="title-block">Выбрать период</div>
-                <DayPicker 
+                <DayPicker
                     mode="range"
                     selected={range}
                     onSelect={(selected) => onSelectCalerdar(selected)}
                     locale={ru}
-                    // disabled={}
+                    captionLayout="dropdown" fromYear={2024} toYear={2034}
                     className={style.map}
+                    disabled={{ after: today }}
+                    footer={
+                        range && (
+                          <p>
+                            {range.from && range.from.toLocaleDateString() + ' —'}
+                            {range.to && range.to.toLocaleDateString()}
+                          </p>
+                        )
+                      }
                 />
             </div>
         </div>

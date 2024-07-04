@@ -29,7 +29,20 @@ export const UsersAddEdit = ({btnText, btnClassName, value, titlePopup}: Props) 
     }
 
     const customStyles = {
-        overlay: {zIndex: 1000}
+        overlay: {
+            zIndex: 1000,
+            backgroundColor: 'rgba(0,0,0, .7)'
+        },
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            padding: '20px 50px 40px'
+          },
+        
     };
 
     const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -79,13 +92,21 @@ export const UsersAddEdit = ({btnText, btnClassName, value, titlePopup}: Props) 
                 contentLabel="Example Modal"
             >
                 <h2>{titlePopup}</h2>
-                <button onClick={closeModal}>Закрыть</button>
+                <div onClick={closeModal} style={{
+                    position: 'absolute',
+                    right: '20px',
+                    top: '15px',
+                    cursor: 'pointer'
+
+                }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </div>
                 <form onSubmit={submit}>
                     <input defaultValue={value && value.second_name || ''} type="text" name="second_name" placeholder="Фамилия" />
                     <input defaultValue={value && value.name || ''} type="text" name="user_name" placeholder="Имя" />
                     <input defaultValue={value && value.coast || ''} type="text" name="last_name" placeholder="Отчество" />
                     <input defaultValue={value && value.coast || ''} type="text" name="coast" placeholder="Ставка в час" />
-                    <input type="submit" />
+                    <input type="submit" className="btn"/>
                 </form>
             </Modal>
             <ToastContainer
