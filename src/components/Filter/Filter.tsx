@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Button } from '../ui/Button/Button'
 import style from './Filter.module.scss'
 
 import { DateRange, DayPicker } from "react-day-picker";
