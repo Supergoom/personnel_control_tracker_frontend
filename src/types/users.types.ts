@@ -7,6 +7,7 @@ export interface IUsers extends IUserId, IStatus {
     time_format: string;
     coast_today: number;
     work_period: string;
+    date?: string;
 }
 
 export interface IStatusUser extends IUserId, IStatus {
@@ -34,5 +35,9 @@ export interface IState {
         from: string;
         to: string;
     },
-    userId?: null
+    userId?: null;
+    user: {
+        personal_id: number;
+        name: string;
+    }
 }

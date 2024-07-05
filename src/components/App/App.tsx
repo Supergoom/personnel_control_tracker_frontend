@@ -19,7 +19,10 @@ function App() {
             from: String(today.setHours(0, 0, 0, 0)), // Начало дня.
             to: String(Math.floor(today.getTime() / 1000))
         },
-        userId: null
+        user: {
+            personal_id: 0,
+            name: ''
+        }
     });
 
     return (
@@ -28,7 +31,7 @@ function App() {
                 <DarkMode />
                 <div className={style.container}>
                     <Filter setState={setState}/>
-                    <UserResultList state={state}/>
+                    <UserResultList state={state} setState={setState}/>
                 </div>
             </div>
             <ToastContainer />

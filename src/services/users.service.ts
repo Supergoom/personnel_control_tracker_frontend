@@ -5,6 +5,10 @@ export const UsersService = {
 		return api.get('/work').then(res => res.data)		
 	},
 
+	getUserById: async (personal_id: number) => {
+		return api.get(`work/active/${personal_id}`).then(res => res.data)		
+	},
+
 	editStatusUser: async (personal_id: number, status: string) => {
 		return api.post('/work', {
 			personal_id,

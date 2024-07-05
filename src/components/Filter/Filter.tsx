@@ -32,13 +32,14 @@ export const Filter = ({setState}: any) => {
             filter: {
                 from: from,
                 to: to
-            }
+            },
+            user: {}
         });
     }
 
     const todayClick = (event: MouseEvent<HTMLElement>) => {
         toggleClassActive((event.target as Element));
-        
+
         setRange({ from: today, to: undefined });
         setState('today');
         setState({
@@ -46,7 +47,8 @@ export const Filter = ({setState}: any) => {
             filter: {
                 from: today,
                 to: undefined
-            }
+            },
+            user: {}
         });
 
     }
@@ -62,7 +64,8 @@ export const Filter = ({setState}: any) => {
             filter: {
                 from: currentDate,
                 to: today
-            }
+            },
+            user: {}
         });
     }
 
@@ -75,7 +78,8 @@ export const Filter = ({setState}: any) => {
             filter: {
                 from: startOfMonth(today),
                 to: today
-            }
+            },
+            user: {}
         });
     }
 
@@ -99,6 +103,12 @@ export const Filter = ({setState}: any) => {
         btns.forEach((item) => item.classList.remove('active'));
         target.classList.add("active");
     }
+
+    function calculatePastDate(monthsToSubtract: number) {
+        let date = new Date();
+        date.setMonth(date.getMonth() - monthsToSubtract);
+        return date;
+    }
  
     return (
         <div>
@@ -113,21 +123,25 @@ export const Filter = ({setState}: any) => {
             <div className={style.mapContainer}>
                 <div className="title-block">Выбрать период</div>
                 <DayPicker
+                defaultMonth={calculatePastDate(1)}
+                    numberOfMonths={2}
                     mode="range"
                     selected={range}
                     onSelect={(selected) => onSelectCalerdar(selected)}
                     locale={ru}
-                    captionLayout="dropdown" fromYear={2024} toYear={2034}
+                    captionLayout="dropdown"
+                    fromYear={2024}
+                    toYear={2030}
                     className={style.map}
                     disabled={{ after: today }}
-                    footer={
-                        range && (
-                          <p>
-                            {range.from && range.from.toLocaleDateString()}
-                            {range.to && ' — ' + range.to.toLocaleDateString()}
-                          </p>
-                        )
-                      }
+                    // footer={
+                    //     range && (
+                    //       <p>
+                    //         {range.from && range.from.toLocaleDateString()}
+                    //         {range.to && ' — ' + range.to.toLocaleDateString()}
+                    //       </p>
+                    //     )
+                    // }
                 />
             </div>
         </div>
