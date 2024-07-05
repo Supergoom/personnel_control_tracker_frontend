@@ -8,6 +8,7 @@ import { IState } from '../../types/users.types';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -20,8 +21,6 @@ function App() {
         },
         userId: null
     });
-
-    console.log('state', state);
 
     return (
         <QueryClientProvider client={queryClient}>
