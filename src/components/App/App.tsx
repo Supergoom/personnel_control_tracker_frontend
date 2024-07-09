@@ -28,7 +28,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <div className={style.main}>
-                <DarkMode />
+                {/* <DarkMode /> */}
                 <div className={style.container}>
                     <Filter setState={setState}/>
                     <UserResultList state={state} setState={setState}/>
