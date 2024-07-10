@@ -46,12 +46,12 @@ export const UserResultList = ({state, setState}: {state: IState, setState: any}
 
     }
 
-    if (isPending) return 'Loading...';
+    if (isPending) return 'Загрузка...';
     if (error) return 'An error has occurred: ' + error.message;
 
     return (
         <div className={style.main}>
-            {data && !data?.length ? 'Нет пользователей' : 
+            {data && !data?.length ? 'Нет результатов' : 
                 <div className="" ref={contentToPrint}>
                     <div className="title-block">
                         {state.tab === 'today' ? 'Результат за сегодня' : ''}
