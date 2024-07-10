@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { DarkMode } from '../DarkMode/DarkMode';
+// import { DarkMode } from '../DarkMode/DarkMode';
 import { Filter } from '../Filter/Filter'
 import { UserResultList } from '../UserResultList/UserResultList';
 import style from './App.module.scss';
