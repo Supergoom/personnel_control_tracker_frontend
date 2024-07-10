@@ -48,83 +48,83 @@ export const UserResultList = ({state, setState}: {state: IState, setState: any}
 
     if (isPending) return 'Loading...';
     if (error) return 'An error has occurred: ' + error.message;
-    if (data && !data?.length) return 'Нет пользователей';
 
     return (
         <div className={style.main}>
-            
-            <div className="" ref={contentToPrint}>
-                <div className="title-block">
-                    {state.tab === 'today' ? 'Результат за сегодня' : ''}
-                    {state.tab === 'filter' ? `Результат за ${state.filter.from} - ${state.filter.to}` : ''}
-                    {state.tab === 'user' ? `Результат за все дни ${state.user.name}` : ''}
-                </div>
-                <div className="">
-                    <div className={style.header}>
-                        <div className="">{state.tab === 'user' ? 'Дата' : 'ФИО'}</div>
-                        <div className="">Период</div>
-                        <div className="">Часов</div>
-                        <div className="">Почасовой оклад</div>
-                        <div className="">Итого</div>
+            {data && !data?.length ? 'Нет пользователей' : 
+                <div className="" ref={contentToPrint}>
+                    <div className="title-block">
+                        {state.tab === 'today' ? 'Результат за сегодня' : ''}
+                        {state.tab === 'filter' ? `Результат за ${state.filter.from} - ${state.filter.to}` : ''}
+                        {state.tab === 'user' ? `Результат за все дни ${state.user.name}` : ''}
                     </div>
-                    {data.map((item: IUsers, index: number) => (
-                        <div className={style.item} key={`${item.personal_id}_${index}`}>
-                            <div className={style.fio}>
-                                
-                                {state.tab === 'user' ? <>{item.date}</> :
-                                    <>
-                                        <div className={style.name}>
-                                            <UsersAddEdit 
-                                                btnText={
-                                                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10.0013 4.49996L12.0013 6.49996M8.66797 13.8333H14.0013M3.33464 11.1666L2.66797 13.8333L5.33464 13.1666L13.0586 5.44263C13.3086 5.19259 13.449 4.85351 13.449 4.49996C13.449 4.14641 13.3086 3.80733 13.0586 3.55729L12.944 3.44263C12.6939 3.19267 12.3549 3.05225 12.0013 3.05225C11.6477 3.05225 11.3087 3.19267 11.0586 3.44263L3.33464 11.1666Z" stroke="#287EFF" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                }
-                                                titlePopup={'Редактировать сотрудника'}
-                                                btnClassName={style.nameUser}
-                                                value={{
-                                                    name: item.name,
-                                                    last_name: item.last_name,
-                                                    second_name: item.second_name,
-                                                    coast: item.coast,
-                                                    personal_id: item.personal_id
-                                                }}
-                                            />
-                                            <button 
-                                                className={style.nameUser}
-                                                data-personal_id={item.personal_id}
-                                                data-name={`${item.second_name} ${item.name[0]}. ${item.last_name[0]}.`}
-                                                onClick={openUser}
-                                            >
-                                                {item.second_name} {item.name[0]}. {item.last_name[0]}.
-                                            </button>
-                                        </div>
-                                        <StatusButton status={item.status} personal_id={item.personal_id}/>
-                                </>}
-                            </div>
-                            <div className="">
-                                {item.work_period}
-                            </div>
-                            <div className="">
-                                {item.time_format}
-                            </div>
-                            <div className={style.salary}>
-                                {item.coast} руб.
-                            </div>
-                            <div className="">
-                                {item.coast_today} руб.
-                                <DeleteUser personal_id={item.personal_id}/>
-                            </div>
+                    <div className="">
+                        <div className={style.header}>
+                            <div className="">{state.tab === 'user' ? 'Дата' : 'ФИО'}</div>
+                            <div className="">Период</div>
+                            <div className="">Часов</div>
+                            <div className="">Почасовой оклад</div>
+                            <div className="">Итого</div>
                         </div>
-                    ))}
-                </div>
-                <div className={style.buttom}>
-                    <div className={style.result}>
-                        <div>Итого:</div>
-                        <div>{totalCoast()} р.</div>
+                        {data.map((item: IUsers, index: number) => (
+                            <div className={style.item} key={`${item.personal_id}_${index}`}>
+                                <div className={style.fio}>
+                                    
+                                    {state.tab === 'user' ? <>{item.date}</> :
+                                        <>
+                                            <div className={style.name}>
+                                                <UsersAddEdit 
+                                                    btnText={
+                                                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.0013 4.49996L12.0013 6.49996M8.66797 13.8333H14.0013M3.33464 11.1666L2.66797 13.8333L5.33464 13.1666L13.0586 5.44263C13.3086 5.19259 13.449 4.85351 13.449 4.49996C13.449 4.14641 13.3086 3.80733 13.0586 3.55729L12.944 3.44263C12.6939 3.19267 12.3549 3.05225 12.0013 3.05225C11.6477 3.05225 11.3087 3.19267 11.0586 3.44263L3.33464 11.1666Z" stroke="#287EFF" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    }
+                                                    titlePopup={'Редактировать сотрудника'}
+                                                    btnClassName={style.nameUser}
+                                                    value={{
+                                                        name: item.name,
+                                                        last_name: item.last_name,
+                                                        second_name: item.second_name,
+                                                        coast: item.coast,
+                                                        personal_id: item.personal_id
+                                                    }}
+                                                />
+                                                <button 
+                                                    className={style.nameUser}
+                                                    data-personal_id={item.personal_id}
+                                                    data-name={`${item.second_name} ${item.name[0]}. ${item.last_name[0]}.`}
+                                                    onClick={openUser}
+                                                >
+                                                    {item.second_name} {item.name[0]}. {item.last_name[0]}.
+                                                </button>
+                                            </div>
+                                            <StatusButton status={item.status} personal_id={item.personal_id}/>
+                                    </>}
+                                </div>
+                                <div className="">
+                                    {item.work_period}
+                                </div>
+                                <div className="">
+                                    {item.time_format}
+                                </div>
+                                <div className={style.salary}>
+                                    {item.coast} руб.
+                                </div>
+                                <div className="">
+                                    {item.coast_today} руб.
+                                    <DeleteUser personal_id={item.personal_id}/>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className={style.buttom}>
+                        <div className={style.result}>
+                            <div>Итого:</div>
+                            <div>{totalCoast()} р.</div>
+                        </div>
                     </div>
                 </div>
-            </div> 
+            }
             <div className={style.buttomBtns}>
                 <UsersAddEdit btnText={'Добавить сотрудника'} titlePopup={'Добавить сотрудника'}/>
                 <button onClick={() => {
