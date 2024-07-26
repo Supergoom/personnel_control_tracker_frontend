@@ -6,6 +6,7 @@ import { DeleteUser } from '../DeleteUser/DeleteUser';
 import { StatusButton } from '../StatusButton/StatusButton';
 import { UsersAddEdit } from '../UsersAdd/UsersAdd';
 import style from './UserResultList.module.scss';
+import { Link } from 'react-router-dom';
 
 export const UserResultList = ({state, setState}: {state: IState, setState: any}) => {
     const {isPending, error, data} = useGetUsers(state);
@@ -76,7 +77,7 @@ export const UserResultList = ({state, setState}: {state: IState, setState: any}
                                                 <UsersAddEdit 
                                                     btnText={
                                                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M10.0013 4.49996L12.0013 6.49996M8.66797 13.8333H14.0013M3.33464 11.1666L2.66797 13.8333L5.33464 13.1666L13.0586 5.44263C13.3086 5.19259 13.449 4.85351 13.449 4.49996C13.449 4.14641 13.3086 3.80733 13.0586 3.55729L12.944 3.44263C12.6939 3.19267 12.3549 3.05225 12.0013 3.05225C11.6477 3.05225 11.3087 3.19267 11.0586 3.44263L3.33464 11.1666Z" stroke="#287EFF" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M10.0013 4.49996L12.0013 6.49996M8.66797 13.8333H14.0013M3.33464 11.1666L2.66797 13.8333L5.33464 13.1666L13.0586 5.44263C13.3086 5.19259 13.449 4.85351 13.449 4.49996C13.449 4.14641 13.3086 3.80733 13.0586 3.55729L12.944 3.44263C12.6939 3.19267 12.3549 3.05225 12.0013 3.05225C11.6477 3.05225 11.3087 3.19267 11.0586 3.44263L3.33464 11.1666Z" stroke="#287EFF" strokeLinecap="round" strokeLinejoin="round" />
                                                         </svg>
                                                     }
                                                     titlePopup={'Редактировать сотрудника'}
@@ -126,7 +127,10 @@ export const UserResultList = ({state, setState}: {state: IState, setState: any}
                 </div>
             }
             <div className={style.buttomBtns}>
-                <UsersAddEdit btnText={'Добавить сотрудника'} titlePopup={'Добавить сотрудника'}/>
+                <div style={{display: 'flex', gap: '30px'}}>
+                    <UsersAddEdit btnText={'Добавить сотрудника'} titlePopup={'Добавить сотрудника'}/>
+                    <Link to="/inventory"><button>Ивентаризация</button></Link>
+                </div>
                 <button onClick={() => {
                     handlePrint(null, () => contentToPrint.current);
                 }}>

@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useDeleteUser } from "../../hooks/useDelUser";
-import { IUserId } from "../../types/users.types";
 import { Dropdown } from "../Dropdown/Dropdown";
 import styles from "./DeleteUser.module.scss";
+import { IOrders } from "../../types/orders.types";
+import { useDeleteOrder } from "../../hooks/useDelOrder";
 
-export const DeleteUser = ({personal_id}: IUserId) => {
-    const {mutate: mutateDeleteUser} = useDeleteUser();
+export const DeleteOrder = ({id}: {id: string}) => {
+    const {mutate: mutateDeleteUser} = useDeleteOrder();
     const [showDropdown, setShowDropdown] = useState(false);
 
     const onClickDelUser = () => {
-        mutateDeleteUser({personal_id});
+        mutateDeleteUser({id});
     }
 
     return(

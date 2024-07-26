@@ -1,0 +1,32 @@
+.btn {
+    cursor: pointer;
+}
+
+.dropdown {
+    padding: 20px;
+    background: var(--text-color-bg);
+    border: 1px solid var(--table-border-color);
+    border-radius: 10px;
+
+    & > p {
+        font-size: 16px;
+        white-space: nowrap;
+        margin: 0;
+        text-align: center;
+        font-weight: 500;
+    }
+}
+
+.btns {
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.deleteBtn {
+    background: #d51313;
+
+    &:hover {
+        background: #FF3535;
+    }
+}

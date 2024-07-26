@@ -1,8 +1,10 @@
-.main {
-    padding: 60px;
+.clinicTitle {
+    text-align: center;
 }
 
-.container {
+.clinicBtns {
     display: flex;
-    gap: 85px;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
 }
